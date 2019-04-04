@@ -1,0 +1,135 @@
+添加员工信息  身份证号,手机号,公司邮箱都是唯一的
+http://localhost:8080/content/adduser.do
+{"idNo":"110482948374652718",
+"deptId":1,
+"sex":"1",
+"name":"张三",
+"mobileNo":"13834939392",
+"birthday":"20170404",
+"ethnic":"汉",
+"education":"本科",
+"university":"清华大学",
+"major":"计算机",
+"graduationDate":"20180103",
+"entryDate":"20190303",
+"leaveDate":"20200505",
+"status":"1",
+"position":"0",
+"companyEmail":"zhangsan@nantian.com.cn",
+"personEmail":"zhangsan@163.com",
+"post":"1",
+"nativePlace":"北京",
+"jurisdiction":"管理员",
+"marriageStatus":"1"}
+
+获取员工信息
+http://localhost:8080/content/findbyidandname.do
+{"deptId":1,
+"name":"张三"}
+	
+查询员工信息	
+http://localhost:8080/content/selectpersonnel.do?perId=3   >返回内容
+{"code":200,"data":{"add number":{"birthday":"2017-04-04 00:00:00","companyEmail":"zhangsan@nantian.com.cn","deptId":1,"education":"本科","entryDate":"2019-03-03 00:00:00","ethnic":"汉","graduationDate":"2018-01-03 00:00:00","idNo":"110482948374652718","jurisdiction":"1","leaveDate":"2020-05-05 00:00:00","major":"计算机","marriageStatus":"1","mobileNo":"13834939392","name":"张三","nativePlace":"北京","password":"aef48da03d1363e4917cc3e9934c70b5","perId":3,"personEmail":"zhangsan@163.com","position":"4","post":"1","sex":"1","status":"4","university":"清华大学"}},"message":"Ok"}	
+
+
+(修改员工信息)
+http://localhost:8080/content/updatebyidno.do 
+{"perId":4,
+"idNo":"110482948374652718",
+"deptId":1,
+"sex":"1",
+"name":"张三",
+"mobileNo":"13834939392",
+"birthday":"20170404",
+"ethnic":"汉",
+"education":"本科",
+"university":"清华大学",
+"major":"计算机",
+"graduationDate":"20180103",
+"entryDate":"20190303",
+"leaveDate":"20200505",
+"status":"1",
+"position":"0",
+"companyEmail":"zhangsan@nantian.com.cn",
+"personEmail":"zhangsan@163.com",
+"post":"1",
+"nativePlace":"北京1",
+"marriageStatus":"1"}
+
+(添加别名信息)
+http://localhost:8080/othername/add.do
+{"projectNumber":3,
+"inProjectName":"李四003",
+"inCompanyName":"李四",
+"idNo":"110482948374652712"}
+
+(修改别名)
+http://localhost:8080/othername/updateothname.do
+{"perId":"3",
+"projectNumber":3,
+"inProjectName":"李四003",
+"inCompanyName":"李四",
+"idNo":"110482948374652712"}
+
+(添加员工在项目中的信息)
+http://localhost:8080/inproject/add.do
+{"perId":"7" ,
+"projectNumber":"1",
+"inProjectLeave":"3",
+"projectBegdate":"20170405",
+"projectEnddate":"20170407",
+"workType":"1",
+"idNo":"110482948374652712"}
+
+
+(根据客户类别,项目名称,姓名查询所在项目)
+http://localhost:8080/inproject/selectperinpro.do?custType=1&projectName=&name= 李四
+
+
+
+(修改员工所在项目信息)
+http://localhost:8080/inproject/update.do
+{"perId":"7" ,
+"projectNumber":"1",
+"inProjectLeave":"3",
+"projectBegdate":"20170412",
+"projectEnddate":"20170417",
+"workType":"1",
+"idNo":"110482948374652712"}
+
+(导入工时表格)
+http://localhost:8080/workhours/importExcel.do
+myFile    custType
+
+--中行
+{
+  "code": 200,
+  "data": {
+    "code": {
+      "success num ": 70,
+      "failed num ": 4027,
+      "rows ": 4097
+    }
+  },
+  "message": "Ok"
+}
+
+工时查询
+http://localhost:8080/workhours/selectworkhours.do?perId=2&custType=3&startDate=2019-02&endDate= &jurisdiction=1
+
+
+
+
+修改工时
+http://localhost:8080/workhours/updatewh.do
+传入的json传
+{"perId":"1" ,
+"workDate":"2018-03-19",
+"normalHours":5,
+"overtimeHours":4
+}
+
+
+
+
+	
